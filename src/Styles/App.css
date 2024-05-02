@@ -1,7 +1,9 @@
 /* styles.css */
 
 /* Estilos generales */
-body {
+
+
+body,html {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
