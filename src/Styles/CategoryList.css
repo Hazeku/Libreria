@@ -1,0 +1,18 @@
+/* Estilos de la lista de categorías */
+.category-list {
+  margin-top: 20px;
+}
+
+.category-list h2 {
+  margin-bottom: 10px;
+}
+
+.category-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  cursor: pointer;
+  margin-bottom: 5px;
+}

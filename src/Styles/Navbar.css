@@ -1,36 +1,40 @@
+/* Estilos de la barra de navegación */
 .navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .navbar-nav {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-item {
-    margin-right: 1rem;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .nav-link:hover {
-    text-decoration: underline;
-  }
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
   

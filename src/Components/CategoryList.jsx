@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-const CategoryList = () => {
+function CategoryList({ categories, onSelectCategory }) {
   return (
-    <div>CategoryList</div>
-  )
+    <div className="category-list">
+      <h2>Categorías</h2>
+      <ul>
+        {categories.map((category, index) => (
+          <li key={index} onClick={() => onSelectCategory(category)}>
+            {category}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default CategoryList
+export default CategoryList;
