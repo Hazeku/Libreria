@@ -8,6 +8,7 @@ function ItemList({ items }) {
         {items.map((item, index) => (
           <li key={index}>
             <h3>{item.title}</h3>
+            <img src={item.image} alt={item.title} /> {/* Agrega esta línea para mostrar la imagen */}
             <p>{item.description}</p>
             <p>Categoría: {item.category}</p>
           </li>

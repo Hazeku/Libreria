@@ -4,12 +4,14 @@ import './Styles/Navbar.css';
 import './Styles/CategoryList.css';
 import './Styles/ItemList.css';
 import './Styles/Footer.css';
+import './Styles/Carousel.css';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import CategoryList from './Components/CategoryList';
 import ItemList from './Components/ItemList';
 import Navbar from './Components/Navbar';
 import articles from './Data/Articles';
 import Footer from './Components/Footer';
+import Carousel from './Components/Carousel';
 
 
 

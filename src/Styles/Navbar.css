@@ -28,6 +28,11 @@
 .nav-item {
   margin-right: 20px;
 }
+.nav-item:hover {
+  margin-right: 20px;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
 
 .nav-link {
   text-decoration: none;
@@ -35,6 +40,7 @@
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  
 }
   
