@@ -1,15 +1,15 @@
 .carousel-container {
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  
-  .carousel img {
-    width: 100%;
-    height: auto;
-  }
-  
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel img {
+  width: 50%; /* Establece el ancho al 100% */
+  height: auto; /* Mantiene la proporción original */
+  object-fit: cover; /* Opcional: ajusta la imagen manteniendo la relación de aspecto */
+}

@@ -16,7 +16,7 @@ import Carousel from './Components/Carousel';
 
 
 function App() {
-  const categories = ["Fantasía", "Ficción", "Educación"]; // Puedes agregar más categorías aquí según sea necesario
+  const categories = ["Instrumentos escolares", "Fotocopias", "Suministros escolares","Libros",]; // Puedes agregar más categorías aquí según sea necesario
 
   const handleCategorySelect = (category) => {
     // Lógica para filtrar artículos por categoría
@@ -26,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Carousel></Carousel>
       <div className="container">
         <CategoryList categories={categories} onSelectCategory={handleCategorySelect} />
         <ItemList items={articles} />

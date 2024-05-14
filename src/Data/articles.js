@@ -143,22 +143,22 @@ const articles = [
       id: 21,
       title: "El Hobbit",
       description: "Una aventura épica en la Tierra Media.",
-      category: "Fantasía",
+      category: "Libros",
       image: "/Images/hobbit.jpg" // Ruta de la imagen para El Hobbit
     },
     {
       id: 22,
       title: "Cien años de soledad",
       description: "Una saga familiar en un pueblo ficticio.",
-      category: "Ficción",
+      category: "Libros",
       image: "/Images/cienaños.jpg" // Ruta de la imagen para Cien años de soledad
     },
     {
       id: 23,
       title: "Introducción a la Programación",
       description: "Un libro introductorio sobre programación.",
-      category: "Educación",
-      image: "/Images/programacion.jpg" // Ruta de la imagen para Introducción a la Programación
+      category: "Libros",
+      image: "/Images/programación.jpg" // Ruta de la imagen para Introducción a la Programación
     }
   ];
 
