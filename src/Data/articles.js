@@ -1,165 +1,969 @@
 const articles = [
     {
       id: 1,
-      title: "Resma de papel A4",
-      description: "500 hojas de papel tamaño A4 blanco.",
-      category: "Fotocopias",
+      title: "Abroch Deli 0224",
+      description: "",
+      category: "",
       image: "/Images/resma_papel.jpg"
     },
     {
-      id: 2,
-      title: "Lápiz HB",
-      description: "Lápiz de grafito grado HB para escritura y dibujo.",
-      category: "Instrumentos Escolares",
-      image: "/Images/lapiz_hb.jpg"
+      id: 1,
+      title: "Abroch Grap pinza 21/6",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 3,
-      title: "Cuaderno de espiral",
-      description: "Cuaderno de espiral de 100 hojas tamaño carta.",
-      category: "Suministros Escolares",
-      image: "/Images/cuaderno_espiral.jpg"
+      id: 1,
+      title: "Acrilico Acuarel (60)ML",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 4,
-      title: "Marcadores de colores",
-      description: "Set de 12 marcadores de colores surtidos.",
-      category: "Suministros Escolares",
-      image: "/Images/marcadores_colores.jpg"
+      id: 1,
+      title: "Acrilico AD (60)ML",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 5,
-      title: "Calculadora científica",
-      description: "Calculadora científica avanzada con funciones trigonométricas y estadísticas.",
-      category: "Instrumentos Escolares",
-      image: "/Images/calculadora_cientifica.jpg"
+      id: 1,
+      title: "Acuarela Ezco (12)BOLSA",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 6,
-      title: "Folios de colores",
-      description: "Paquete de 100 folios de colores surtidos.",
-      category: "Fotocopias",
-      image: "/Images/folios_colores.jpg"
+      id: 1,
+      title: "Barra pistola fina larga",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 7,
-      title: "Goma de borrar",
-      description: "Goma de borrar de alta calidad para borrar lápiz.",
-      category: "Instrumentos Escolares",
-      image: "/Images/goma_borrar.jpg"
+      id: 1,
+      title: "Barra pistola gruesa larga",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 8,
-      title: "Libro de matemáticas",
-      description: "Libro de texto de matemáticas para estudiantes de primaria.",
-      category: "Libros",
-      image: "/Images/libro_matematicas.jpg"
+      id: 1,
+      title: "Barra volibarra 10grs",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 9,
-      title: "Regla transparente",
-      description: "Regla de plástico transparente de 30 cm.",
-      category: "Instrumentos Escolares",
-      image: "/Images/regla_transparente.jpg"
+      id: 1,
+      title: "Barra volibarra 22grs",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 10,
-      title: "Tijeras escolares",
-      description: "Tijeras escolares de punta roma para uso en el aula.",
-      category: "Instrumentos Escolares",
-      image: "/Images/tijeras_escolares.jpg"
+      id: 1,
+      title: "Barra volibarra 40grs",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 11,
-      title: "Agendas semanales",
-      description: "Agendas semanales para llevar un registro de las tareas y eventos.",
-      category: "Suministros Escolares",
-      image: "/Images/agendas_semanales.jpg"
+      id: 1,
+      title: "Biblior Avios A4",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 12,
-      title: "Carpeta archivadora",
-      description: "Carpeta archivadora de plástico para organizar documentos.",
-      category: "Suministros Escolares",
-      image: "/Images/carpeta_archivadora.jpg"
+      id: 1,
+      title: "Biblior Avios Esquela",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 13,
-      title: "Portaminas",
-      description: "Portaminas con recarga de grafito y goma de borrar incorporada.",
-      category: "Instrumentos Escolares",
-      image: "/Images/portaminas.jpg"
+      id: 1,
+      title: "Biblior Avios Forrado A4",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 14,
-      title: "Recambio de bolígrafos",
-      description: "Paquete de recambio de bolígrafos de tinta azul.",
-      category: "Suministros Escolares",
-      image: "/Images/recambio_boligrafos.jpg"
+      id: 1,
+      title: "Biblior Avios Forrado Oficio",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 15,
-      title: "Borrador blanco",
-      description: "Borrador blanco de plástico para borrar tinta.",
-      category: "Instrumentos Escolares",
-      image: "/Images/borrador_blanco.jpg"
+      id: 1,
+      title: "Biblior Avios Oficio",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 16,
-      title: "Atlas geográfico",
-      description: "Atlas geográfico con mapas detallados de todo el mundo.",
-      category: "Libros",
-      image: "/Images/atlas_geografico.jpg"
+      id: 1,
+      title: "Boligoma voligoma (30)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 17,
-      title: "Rotuladores permanentes",
-      description: "Set de 6 rotuladores permanentes de diferentes colores.",
-      category: "Suministros Escolares",
-      image: "/Images/rotuladores_permanentes.jpg"
+      id: 1,
+      title: "Boligoma voligoma (50)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 18,
-      title: "Dossieres de plástico",
-      description: "Paquete de 10 dossieres de plástico para presentar trabajos.",
-      category: "Suministros Escolares",
-      image: "/Images/dossieres_plastico.jpg"
+      id: 1,
+      title: "Borrador Piz.Blanca",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 19,
-      title: "Cinta adhesiva",
-      description: "Rollo de cinta adhesiva transparente de 30 metros.",
-      category: "Suministros Escolares",
-      image: "/Images/cinta_adhesiva.jpg"
+      id: 1,
+      title: "Brillantina Sifap",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 20,
-      title: "Pegamento escolar",
-      description: "Bote de pegamento escolar no tóxico para manualidades.",
-      category: "Suministros Escolares",
-      image: "/Images/pegamento_escolar.jpg"
+      id: 1,
+      title: "Broche dorado N10",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 21,
-      title: "El Hobbit",
-      description: "Una aventura épica en la Tierra Media.",
-      category: "Libros",
-      image: "/Images/hobbit.jpg" // Ruta de la imagen para El Hobbit
+      id: 1,
+      title: "Broche dorado N12",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 22,
-      title: "Cien años de soledad",
-      description: "Una saga familiar en un pueblo ficticio.",
-      category: "Libros",
-      image: "/Images/cienaños.jpg" // Ruta de la imagen para Cien años de soledad
+      id: 1,
+      title: "Broche dorado N14",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
     },
     {
-      id: 23,
-      title: "Introducción a la Programación",
-      description: "Un libro introductorio sobre programación.",
-      category: "Libros",
-      image: "/Images/programación.jpg" // Ruta de la imagen para Introducción a la Programación
-    }
-  ];
+      id: 1,
+      title: "Broche dorado N18",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N2",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N20",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N3",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N4",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N5",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N6",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N7",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N8",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche dorado N9",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche nepaco plastico Ezco",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche nepaco plastico IBI",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche nepaco plastico NC",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Broche nepaco plastico OLAMI",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta auca doble faz 18x25",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N1",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N12",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N2",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N22",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N3",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N5",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N60",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N80",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta patria N9",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta stiko de papel 12x50",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta stiko de papel 18x50",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Cinta stiko de papel 24x50",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Clasif A4 fw(1400A)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Clasif OF fw(1200F) C/ventana",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Clasif OF fw(1400F)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Contac transparente (10)Metros",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Corrector lapiz faber",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Corrector lapiz taiko",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon filgo (12)Corto",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon filgo (12)Jumbo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon filgo (6)Corto",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon Simball (12)Corto",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon Simball (12)Jumbo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Crayon Skycolor (12)Jumbo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Dicc Neo Ingles-Esp/Esp-Ingles",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Dicc Neo Mini Lengua Española",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Escarapela Art.114x24 Milenio",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Escua (30*45)Pizz/Verde",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Escua (30*60)Pizz/Acrilica",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Escua (30*60)Pizz/Verde",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Ficha N3 1028*100",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma 2Band(211)36(Gris)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma 2Band(3036)36(Grande)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Eva Mayor",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Eva Toalla",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Maped Duo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Pizzini Tecnica Duo(GLT30)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Pizzini Tecnica (GT44)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Goma Pizzini Tecnica (GT65)",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Juego Geometrico Geo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Juego Geometrico Maped",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Juego Geometrico Util Uno Flexible",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Lapic Perm Sabonis D/Punta",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Letografo 40mm",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Mezclador Sifap N5 10 Cavidades",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Palito P/Helado x50 Color Grande",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Palito P/Helado x50 Grande",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Papel Carb.Pelikan*50 AZ",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Papel Carb.Pelikan*50 NG",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Papel Glace(10)Luma Comun",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Papel Glace(10)Luma Metal",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Perf IBI 650070",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Dibu s577 N0 Cerda",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Dibu s577 N10 Cerda",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Dibu s577 N2 Cerda",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Dibu s577 N6 Cerda",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Dibu s577 N8 Cerda",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-0 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-10 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-12 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-14 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-16 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-18 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-2 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S100-20 x12 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-00 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-1 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-12 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-2 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-3 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-4 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-6 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S120-8 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S140-0 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S140-1 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S140-10 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S140-12 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pincel Olami S140-2 x6 Un",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pintura A La Tiza Eterna (200)Cobre",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pintura A La Tiza Eterna (200)Fluor",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pintura A La Tiza Eterna (200)Oro Rico",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Pintura Eqarte A La Tiza (200)Oro",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (1000GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (100GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (250GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (30GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (500GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Plasticola Sta (50GR)A",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Regla Metalica (30)Deli",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Regla Metalica (30)IBI",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Regla Util Uno(15)Super Flex",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Regla Util Uno(20)Super Flex",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Tapa N3 Cartone C/Dibujo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Tapa N3 Relieve",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Tapa N5 Cartone C/Dibujo",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Tijera Maped (17)Essentials Pastel",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+    {
+      id: 1,
+      title: "Tijera Maped (21)Essentials ",
+      description: "",
+      category: "",
+      image: "/Images/resma_papel.jpg"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+];
 
 export default articles;
