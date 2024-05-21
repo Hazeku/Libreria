@@ -5,10 +5,11 @@
   padding: 10px 0;
 }
 
-.navbar .container {
+.navbar .navcontainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
 }
 
 .navbar-brand {
