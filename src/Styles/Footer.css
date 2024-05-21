@@ -1,18 +1,19 @@
 /* styles.css */
 
 /* Estilos del footer */
-.footer {
-    position: fixed; /* Establece el footer como posición fija */
-    bottom: 0; /* Fija el footer en la parte inferior */
-    width: 100%; /* Establece el ancho del footer al 100% */
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 0;
-  }
-  
-  .footer p {
+ .footer {
+  position: relative; /* Establece el footer como posición relativa */
+  bottom: 0; /* Fija el footer en la parte inferior */
+  width: 100%; /* Establece el ancho del footer al 100% */
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 0;
+}
+
+.footer p {
     margin: 0;
-  }
+   }
+
   

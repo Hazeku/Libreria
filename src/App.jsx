@@ -1,3 +1,5 @@
+
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './Styles/App.css';
 import './Styles/Navbar.css';
@@ -12,11 +14,18 @@ import Navbar from './Components/Navbar';
 import articles from './Data/Articles';
 import Footer from './Components/Footer';
 import Carousel from './Components/Carousel';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 
 function App() {
-  const categories = ["Instrumentos escolares", "Fotocopias", "Suministros escolares","Libros",]; // Puedes agregar más categorías aquí según sea necesario
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+  
+  const categories = ["Instrumentos escolares","Suministros escolares","Libros",]; // Puedes agregar más categorías aquí según sea necesario
 
   const handleCategorySelect = (category) => {
     // Lógica para filtrar artículos por categoría
