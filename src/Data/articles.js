@@ -4,14 +4,14 @@ const articles = [
       title: "Abroch Deli 0224",
       description: "",
       category: "",
-      image: "/Images/resma_papel.jpg"
+      image: "/Images/1.webp"
     },
     {
       id: 2,
       title: "Abroch Grap pinza 21/6",
       description: "",
       category: "",
-      image: "/Images/resma_papel.jpg"
+      image: "/Images/2.webp"
     },
     {
       id: 3,

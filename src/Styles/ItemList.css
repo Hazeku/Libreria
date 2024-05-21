@@ -1,5 +1,8 @@
 .item-list {
-  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  display: flex; /* Utiliza flexbox para colocar los elementos en filas */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente fila si no caben */
 }
 
 .item-list h2 {
@@ -24,12 +27,13 @@
 }
 
 .item-list-container {
+  margin-top: 20px;
   margin-bottom: 100px; /* Ajusta el margen inferior para evitar que el footer se superponga sobre los artículos */
 }
 
 
 .item-list h3 {
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 }
 
 .item-list p {

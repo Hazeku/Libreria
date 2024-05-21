@@ -22,9 +22,15 @@ import 'aos/dist/aos.css';
 function App() {
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({
+      duration: 1000, // Duración de la animación en milisegundos
+      offset: 150,    // Offset (desplazamiento) desde el cual comienza la animación
+      delay: 100,     // Retraso antes de que comience la animación
+      easing: 'ease-in-out', // Efecto de suavizado
+      once: false,     // Si la animación debe ocurrir solo una vez
+    });
   }, []);
-  
+
   const categories = ["Instrumentos escolares","Suministros escolares","Libros",]; // Puedes agregar más categorías aquí según sea necesario
 
   const handleCategorySelect = (category) => {

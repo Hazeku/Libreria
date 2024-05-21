@@ -1,8 +1,10 @@
 /* styles.css */
 
+@import 'aos/dist/aos.css';
+
 /* Estilos del footer */
  .footer {
-  position: relative; /* Establece el footer como posición relativa */
+  position: relative; /* Establece el footer como posición fija */
   bottom: 0; /* Fija el footer en la parte inferior */
   width: 100%; /* Establece el ancho del footer al 100% */
   background-color: #333;
