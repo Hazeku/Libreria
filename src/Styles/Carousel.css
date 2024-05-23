@@ -5,11 +5,11 @@
 
 .carousel {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 3s ease;
 }
 
 .carousel img {
-  width: 50%; /* Establece el ancho al 100% */
+  width: 100%; /* Establece el ancho al 100% */
   height: auto; /* Mantiene la proporción original */
   object-fit: cover; /* Opcional: ajusta la imagen manteniendo la relación de aspecto */
 }

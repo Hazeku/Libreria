@@ -12,12 +12,6 @@ function Navbar() {
           <li className="nav-item">
             <a href="/categorias" className="nav-link">Categorías</a>
           </li>
-          <li className="nav-item">
-            <a href="/carrito" className="nav-link">Carrito</a>
-          </li>
-          <li className="nav-item">
-            <a href="/perfil" className="nav-link">Perfil</a>
-          </li>
         </ul>
       </div>
     </nav>
