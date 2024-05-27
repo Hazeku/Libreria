@@ -1,11 +1,14 @@
 .carousel-container {
-  width: 100%;
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  height: auto; /* Ajusta según tus necesidades */
+
 }
 
 .carousel {
   display: flex;
-  transition: transform 3s ease;
+  transition: transform 3s ease-in;
 }
 
 .carousel img {
@@ -13,3 +16,4 @@
   height: auto; /* Mantiene la proporción original */
   object-fit: cover; /* Opcional: ajusta la imagen manteniendo la relación de aspecto */
 }
+

@@ -1,5 +1,4 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './Styles/App.css';
 import './Styles/Navbar.css';
@@ -7,20 +6,19 @@ import './Styles/CategoryList.css';
 import './Styles/ItemList.css';
 import './Styles/Footer.css';
 import './Styles/Carousel.css';
-import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import './Styles/Modal.css'; // Importar los estilos del modal
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryList from './Components/CategoryList';
 import ItemList from './Components/ItemList';
 import Navbar from './Components/Navbar';
 import articles from './Data/Articles';
 import Footer from './Components/Footer';
 import Carousel from './Components/Carousel';
+import Modal from './Components/Modal'; // Importar el componente Modal
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
-
 function App() {
-
   useEffect(() => {
     AOS.init({
       duration: 1000, // Duración de la animación en milisegundos
@@ -31,22 +29,38 @@ function App() {
     });
   }, []);
 
-  const categories = ["Instrumentos escolares","Suministros escolares","Libros",]; // Puedes agregar más categorías aquí según sea necesario
+  const categories = ["Instrumentos escolares", "Suministros escolares", "Libros", "Utilidades", "Biblioratos", "Carpetas", "Material de Arte, Manualidades, Decoraciones"]; // Puedes agregar más categorías aquí según sea necesario
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const handleCategorySelect = (category) => {
-    // Lógica para filtrar artículos por categoría
+    setSelectedCategory(category);
     console.log("Se seleccionó la categoría:", category);
   };
 
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
+
+  const filteredArticles = selectedCategory
+    ? articles.filter(article => article.category === selectedCategory)
+    : articles;
+
   return (
     <div className="App">
-      <Navbar />
-      <Carousel></Carousel>
+      <Navbar categories={categories} onSelectCategory={handleCategorySelect} />
+      <Carousel />
       <div className="container">
         <CategoryList categories={categories} onSelectCategory={handleCategorySelect} />
-        <ItemList items={articles} />
+        <ItemList items={filteredArticles} onItemClick={handleItemClick} />
       </div>
-      <Footer></Footer>
+      <Footer />
+      {selectedItem && <Modal item={selectedItem} onClose={closeModal} />}
     </div>
   );
 }

@@ -3,6 +3,8 @@
   background-color: #333;
   color: #fff;
   padding: 10px 0;
+  position: relative; /* Asegura que el navbar sea relativo */
+  z-index: 1000; /* Da prioridad al navbar sobre otros elementos */
 }
 
 .navbar .navcontainer {
@@ -24,11 +26,15 @@
   align-items: center;
   margin: 0;
   padding: 0;
+  flex-grow: 1;
+  justify-content: space-evenly; /* Distribuir el espacio entre los elementos */
 }
 
 .nav-item {
   margin-right: 20px;
+  position: relative; /* Necesario para el menú desplegable */
 }
+
 .nav-item:hover {
   margin-right: 20px;
   transform: scale(1.1);
@@ -42,6 +48,32 @@
 
 .nav-link:hover {
   text-decoration: none;
-  
 }
-  
+
+.dropdown-menu {
+  display: none; /* Inicialmente oculto */
+  position: absolute; /* Posiciona el menú desplegable relativo al nav-item */
+  top: 100%; /* Muestra el menú desplegable justo debajo del nav-item */
+  left: 0;
+  right: auto; /* Asegura que el menú no se salga del contenedor */
+  background-color: #444;
+  color: #fff;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1050; /* Asegura que el menú desplegable esté sobre otros elementos */
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #555;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block; /* Muestra el menú desplegable al hacer hover en el nav-item */
+}
