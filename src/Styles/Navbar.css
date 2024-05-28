@@ -5,6 +5,7 @@
   padding: 10px 0;
   position: relative; /* Asegura que el navbar sea relativo */
   z-index: 1000; /* Da prioridad al navbar sobre otros elementos */
+  font-size: large;
 }
 
 .navbar .navcontainer {

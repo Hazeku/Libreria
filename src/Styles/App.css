@@ -3,9 +3,13 @@
 /* Estilos generales */
 
 @import 'aos/dist/aos.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+
 
 body,html {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Utilizar la fuente Roboto */
   margin: 0;
   padding: 0;
 }

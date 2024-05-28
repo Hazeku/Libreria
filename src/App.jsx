@@ -7,10 +7,12 @@ import './Styles/ItemList.css';
 import './Styles/Footer.css';
 import './Styles/Carousel.css';
 import './Styles/Modal.css'; // Importar los estilos del modal
+import './Styles/Servicios.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryList from './Components/CategoryList';
 import ItemList from './Components/ItemList';
 import Navbar from './Components/Navbar';
+import Servicios from './Components/Servicios';
 import articles from './Data/Articles';
 import Footer from './Components/Footer';
 import Carousel from './Components/Carousel';
@@ -29,7 +31,7 @@ function App() {
     });
   }, []);
 
-  const categories = ["Instrumentos escolares", "Suministros escolares", "Libros", "Utilidades", "Biblioratos", "Carpetas", "Material de Arte, Manualidades, Decoraciones"]; // Puedes agregar más categorías aquí según sea necesario
+  const categories = ["Instrumentos escolares", "Suministros escolares","Libros", "Utilidades", "Biblioratos", "Carpetas", "Material de Arte, Manualidades, Decoraciones"]; // Puedes agregar más categorías aquí según sea necesario
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -55,6 +57,7 @@ function App() {
     <div className="App">
       <Navbar categories={categories} onSelectCategory={handleCategorySelect} />
       <Carousel />
+      <Servicios/>
       <div className="container">
         <CategoryList categories={categories} onSelectCategory={handleCategorySelect} />
         <ItemList items={filteredArticles} onItemClick={handleItemClick} />

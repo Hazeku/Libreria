@@ -1,0 +1,43 @@
+.servicios {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.servicios h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.servicios-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.servicio-item {
+  width: calc(33.33% - 20px); /* Para que haya espacio entre los elementos */
+  margin-bottom: 20px;
+  position: relative; /* Necesario para el efecto de agrandamiento */
+  overflow: hidden; /* Oculta el desbordamiento al agrandar */
+  transition: transform 0.3s; /* Transición suave */
+}
+
+.servicio-item:hover {
+  transform: scale(1.05); /* Agrandar al pasar el mouse por encima */
+}
+
+.servicio-item img {
+  width: 100%;
+  height: auto;
+}
+
+.servicio-item h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.servicio-item p {
+  color: #555;
+}

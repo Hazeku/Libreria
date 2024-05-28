@@ -1,8 +1,8 @@
 .item-list {
   list-style: none;
   padding: 0;
-  display: flex; /* Utiliza flexbox para colocar los elementos en filas */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente fila si no caben */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item-list h2 {
@@ -12,41 +12,50 @@
 .item-list ul {
   list-style: none;
   padding: 0;
-  display: flex; /* Utiliza flexbox para colocar los elementos en filas */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente fila si no caben */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item-list li {
   margin-bottom: 20px;
-  width: calc(33.333% - 20px); /* Establece el ancho de cada elemento para que haya 3 elementos por fila */
-  margin-right: 20px; /* Margen derecho para separar los elementos */
+  width: calc(33.333% - 20px);
+  margin-right: 20px;
   display: flex;
-  flex-direction: column; /* Alinea los hijos en una columna */
-  align-items: center; /* Centra el contenido horizontalmente */
-  box-sizing: border-box; /* Asegura que el padding y border no afecten el tamaño total */
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .item-list li:nth-child(3n) {
-  margin-right: 0; /* Elimina el margen derecho del último elemento de cada fila */
+  margin-right: 0;
 }
 
 .item-list-container {
   margin-top: 20px;
-  margin-bottom: 100px; /* Ajusta el margen inferior para evitar que el footer se superponga sobre los artículos */
+  margin-bottom: 100px;
 }
 
 .item-list h3 {
   margin-bottom: 30px;
+  transition: transform 0.3s ease-in-out; /* Añade transición al título */
 }
 
 .item-list p {
-  margin: 0;
+  margin: 10px;
+  transition: transform 0.3s ease-in-out; /* Añade transición a la descripción */
 }
 
 .item-list img {
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
-  object-fit: cover; /* Hace que la imagen cubra el contenedor sin deformarse */
-  max-height: 200px; /* Limita la altura máxima de la imagen */
-  border-radius: 8px; /* Añade esquinas redondeadas a la imagen */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 200px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out; /* Añade transición a la imagen */
+}
+
+.item-list li:hover h3,
+.item-list li:hover p,
+.item-list li:hover img {
+  transform: scale(1.05); /* Agrandar al pasar el mouse por encima */
 }

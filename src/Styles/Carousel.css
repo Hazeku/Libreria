@@ -8,7 +8,7 @@
 
 .carousel {
   display: flex;
-  transition: transform 3s ease-in;
+  transition: transform 5s ease-in;
 }
 
 .carousel img {
