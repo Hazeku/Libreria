@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import logo from './logo.svg';
 import './Styles/App.css';
 import './Styles/Navbar.css';
@@ -23,22 +23,33 @@ import 'aos/dist/aos.css';
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duración de la animación en milisegundos
-      offset: 150,    // Offset (desplazamiento) desde el cual comienza la animación
-      delay: 100,     // Retraso antes de que comience la animación
-      easing: 'ease-in-out', // Efecto de suavizado
-      once: false,     // Si la animación debe ocurrir solo una vez
+      duration: 1000,
+      offset: 150,
+      delay: 100,
+      easing: 'ease-in-out',
+      once: false,
     });
   }, []);
 
-  const categories = ["Instrumentos escolares", "Suministros escolares","Libros", "Utilidades", "Biblioratos", "Carpetas", "Material de Arte, Manualidades, Decoraciones"]; // Puedes agregar más categorías aquí según sea necesario
+  const categories = [
+    "Instrumentos escolares",
+    "Suministros escolares",
+    "Libros",
+    "Utilidades",
+    "Biblioratos",
+    "Carpetas",
+    "Material de Arte, Manualidades, Decoraciones"
+  ];
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
 
+  const categoryListRef = useRef(null); // Referencia al elemento de la lista de categorías
+
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     console.log("Se seleccionó la categoría:", category);
+    scrollToCategoryList(); // Desplaza la ventana de visualización hasta la lista de categorías
   };
 
   const handleItemClick = (item) => {
@@ -53,12 +64,16 @@ function App() {
     ? articles.filter(article => article.category === selectedCategory)
     : articles;
 
+  const scrollToCategoryList = () => {
+    categoryListRef.current.scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente hasta la lista de categorías
+  };
+
   return (
     <div className="App">
       <Navbar categories={categories} onSelectCategory={handleCategorySelect} />
       <Carousel />
-      <Servicios/>
-      <div className="container">
+      <Servicios />
+      <div className="container" ref={categoryListRef}> {/* Agrega la referencia al contenedor */}
         <CategoryList categories={categories} onSelectCategory={handleCategorySelect} />
         <ItemList items={filteredArticles} onItemClick={handleItemClick} />
       </div>
