@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Styles/Carousel.css'; // Asegúrate de tener este archivo
 
 function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,18 +12,21 @@ function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <div className="carousel-container">
-      <div className="carousel" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {images.map((image, index) => (
-          <img key={index} src={image} alt={`Slide ${index + 1}`} />
-        ))}
-      </div>
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Slide ${index + 1}`}
+          className={index === currentIndex ? 'active' : 'inactive'}
+        />
+      ))}
     </div>
   );
 }

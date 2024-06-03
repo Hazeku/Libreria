@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 function Servicios() {
   const [servicios, setServicios] = useState([
     {
-      nombre: 'Encuadernado',
-      imagenes: ['/Images/encuadernado.webp', '/Images/encuadernado2.webp', '/Images/encuadernado3.webp'],
-      descripcion: 'Ofrecemos servicios de encuadernado para todo tipo de documentos y proyectos.'
+      nombre: 'Impresión',
+      imagenes: ['/Images/impresión1.webp', '/Images/impresión2.webp', '/Images/impresión3.webp'],
+      descripcion: 'Ofrecemos servicios de impresión.'
     },
     {
       nombre: 'Anillado',

@@ -19,6 +19,7 @@ import Carousel from './Components/Carousel';
 import Modal from './Components/Modal'; // Importar el componente Modal
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Titulo from './Components/Titulo';
 
 function App() {
   useEffect(() => {
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <div className="App">
+      <Titulo/>
       <Navbar categories={categories} onSelectCategory={handleCategorySelect} />
       <Carousel />
       <Servicios />
