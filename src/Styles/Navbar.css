@@ -1,11 +1,11 @@
 /* Estilos de la barra de navegación */
 .navbar {
-  background-color: #333;
+  background-color: #1b1b1b;
   color: #fff;
   padding: 10px 0;
   position: relative; /* Asegura que el navbar sea relativo */
   z-index: 1000; /* Da prioridad al navbar sobre otros elementos */
-  font-size: large;
+  font-size: 25px;
 }
 
 .navbar .navcontainer {
@@ -57,7 +57,7 @@
   top: 100%; /* Muestra el menú desplegable justo debajo del nav-item */
   left: 0;
   right: auto; /* Asegura que el menú no se salga del contenedor */
-  background-color: #444;
+  background-color: #1b1b1b;
   color: #fff;
   min-width: 200px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);

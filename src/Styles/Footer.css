@@ -1,6 +1,6 @@
 .footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #1b1b1b;
+  color: #b4b4b4;
   padding: 20px 0;
 }
 
@@ -21,13 +21,15 @@
 }
 
 .footer-section a {
-  color: #1e90ff;
+  color: #6c93ff;
   display: block;
   margin-bottom: 5px;
+  text-decoration: none;
 }
 
 .footer-section a:hover {
-  text-decoration: underline;
+  transition: ease 0.2s;
+  transform: scale(1.05);
 }
 
 .subscription-form {
@@ -46,7 +48,7 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #1e90ff;
+  background-color: #6c93ff;
   color: white;
   cursor: pointer;
 }
