@@ -13,7 +13,7 @@ import CategoryList from './Components/CategoryList';
 import ItemList from './Components/ItemList';
 import Navbar from './Components/Navbar';
 import Servicios from './Components/Servicios';
-import articles from './Data/Articles';
+import Articles from './Data/Articles';
 import Footer from './Components/Footer';
 import Carousel from './Components/Carousel';
 import Modal from './Components/Modal'; // Importar el componente Modal
@@ -62,8 +62,8 @@ function App() {
   };
 
   const filteredArticles = selectedCategory
-    ? articles.filter(article => article.category === selectedCategory)
-    : articles;
+    ? Articles.filter(article => article.category === selectedCategory)
+    : Articles;
 
   const scrollToCategoryList = () => {
     categoryListRef.current.scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente hasta la lista de categorías

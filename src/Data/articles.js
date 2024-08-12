@@ -1,4 +1,4 @@
-const articles = [
+const Articles = [
     {
       id: 1,
       title: "Abroch Deli 0224",
@@ -966,4 +966,4 @@ const articles = [
     
 ];
 
-export default articles;
+export default Articles;
