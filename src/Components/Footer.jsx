@@ -20,25 +20,13 @@ function Footer() {
         </div>
         <div className="footer-section">
           <h4>Contáctanos</h4>
-          <p>Email: info@milibreria.com</p>
-          <p>Teléfono: +54 9 381 123 4567</p>
+          <p>Teléfono: +54 3865-579016</p>
         </div>
         <div className="footer-section">
-          <h4>Síguenos</h4>
-          <a href="https://www.facebook.com/milibreria" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.twitter.com/milibreria" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://www.instagram.com/milibreria" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
-        <div className="footer-section">
-          <h4>Términos y Condiciones</h4>
-          <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">Leer más</a>
-        </div>
-        <div className="footer-section">
-          <h4>Suscríbete a nuestro boletín</h4>
-          <form className="subscription-form">
-            <input type="email" placeholder="Tu correo electrónico" />
-            <button type="submit">Suscribirse</button>
-          </form>
+          <h4>Horarios de atencion</h4>
+          <p>08:00 - 12:00</p>
+          <p>14:00 - 21:00</p>
+          
         </div>
       </div>
     </footer>

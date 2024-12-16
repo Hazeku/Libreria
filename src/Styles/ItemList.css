@@ -59,3 +59,23 @@
 .item-list li:hover img {
   transform: scale(1.05); /* Agrandar al pasar el mouse por encima */
 }
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+  .item-list li {
+    width: calc(50% - 20px); /* 2 columnas en lugar de 3 */
+    margin-right: 20px;
+  }
+  
+  .item-list li:nth-child(2n) {
+    margin-right: 0; /* Elimina el margen derecho en el último elemento de la fila */
+  }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .item-list li {
+    width: 100%; /* 1 columna */
+    margin-right: 0; /* Sin margen derecho */
+  }
+}
