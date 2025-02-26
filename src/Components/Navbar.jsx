@@ -31,7 +31,7 @@ function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
         {/* Carrito dentro de la barra */}
         <div className="cart">
           <button className="cart-toggle">
-            🛒 {cartItems.length}
+           <i className="bi bi-cart"></i> {cartItems.length}
           </button>
           {cartItems.length > 0 && (
             <div className="cart-dropdown">
@@ -39,7 +39,7 @@ function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
                 {cartItems.map((item, index) => (
                   <li key={index}>
                     {item.title} x {item.quantity} {/* Cambié name por title */}
-                    <button onClick={() => removeFromCart(item.id)}>❌</button>
+                    <button onClick={() => removeFromCart(item.id)}><i class="bi bi-cart-dash"></i></button>
                   </li>
                 ))}
               </ul>

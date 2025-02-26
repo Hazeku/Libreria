@@ -19,6 +19,8 @@ import Modal from './Components/Modal';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Titulo from './Components/Titulo';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function App() {
   useEffect(() => {

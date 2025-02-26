@@ -11,7 +11,7 @@ function Footer() {
         <div className="footer-section">
           <p>Dirección: 25 de Mayo 430, Concepción, Tucumán</p>
           <a 
-            href="https://maps.app.goo.gl/ab4CGUjjyeduAHZ58" 
+            href="https://maps.app.goo.gl/X5LguGDKd5zubhqU9" 
             target="_blank" 
             rel="noopener noreferrer"
           >

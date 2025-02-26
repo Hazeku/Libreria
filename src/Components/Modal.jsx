@@ -12,7 +12,7 @@ function Modal({ item, onClose, onAddToCart }) {
         
         {/* Botón para agregar al carrito */}
         <button className="modal-add-to-cart" onClick={() => onAddToCart(item)}>
-          Agregar al carrito
+        <i class="bi bi-cart-plus"></i> Agregar al carrito
         </button>
 
         {/* Botón de cierre */}
