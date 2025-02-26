@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Navbar({ categories, onSelectCategory }) {
+function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
   return (
     <nav className="navbar">
       <div className="navcontainer">
@@ -10,10 +10,10 @@ function Navbar({ categories, onSelectCategory }) {
             <a href="/" className="nav-link">Inicio</a>
           </li>
           <li className="nav-item dropdown">
-            <a href="#!" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#!" className="nav-link dropdown-toggle" id="navbarDropdown" role="button">
               Categorías
             </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div className="dropdown-menu">
               {categories.map((category, index) => (
                 <a
                   key={index}
@@ -27,6 +27,25 @@ function Navbar({ categories, onSelectCategory }) {
             </div>
           </li>
         </ul>
+
+        {/* Carrito dentro de la barra */}
+        <div className="cart">
+          <button className="cart-toggle">
+            🛒 {cartItems.length}
+          </button>
+          {cartItems.length > 0 && (
+            <div className="cart-dropdown">
+              <ul>
+                {cartItems.map((item, index) => (
+                  <li key={index}>
+                    {item.title} x {item.quantity} {/* Cambié name por title */}
+                    <button onClick={() => removeFromCart(item.id)}>❌</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

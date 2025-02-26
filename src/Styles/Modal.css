@@ -1,50 +1,71 @@
 /* Modal.css */
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
-  .modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    max-width: 600px;
-    width: 90%;
-    position: relative;
-  }
-  
-  .modal-image {
-    width: 50%;
-    border-radius: 8px;
-  }
-  
-  .modal-description {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  flex-direction: column; /* Asegura que los elementos se alineen en columna */
+  align-items: center; /* Centra los elementos dentro del modal */
+}
+
+.modal-image {
+  width: 100%; /* La imagen ocupará el 100% del contenedor */
+  max-width: 300px; /* Limita el tamaño máximo de la imagen */
+  border-radius: 8px;
+  margin-bottom: 20px; /* Espacio entre la imagen y la descripción */
+}
+
+.modal-description {
+  text-align: center;
+  margin-bottom: 20px; /* Espacio entre la descripción y el botón */
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  background-color: #dc3545; /* Cambio de color al pasar el cursor */
+}
+
+.modal-add-to-cart {
+  background-color: #28a745; /* Color verde para el botón */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* El botón ocupa todo el ancho disponible */
+}
+
+.modal-add-to-cart:hover {
+  background-color: #218838; /* Cambio a un verde más oscuro al pasar el cursor */
+}
