@@ -1,0 +1,58 @@
+.footer {
+  background-color: #1b1b1b;
+  color: #b4b4b4;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #6c93ff;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  transition: ease 0.2s;
+  transform: scale(1.05);
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscription-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.subscription-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c93ff;
+  color: white;
+  cursor: pointer;
+}
+
+.subscription-form button:hover {
+  background-color: #1c7ed6;
+}

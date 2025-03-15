@@ -1,0 +1,59 @@
+.servicios {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.servicios h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.servicios-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.servicio-item {
+  width: calc(33.33% - 20px); /* Para pantallas grandes */
+  margin-bottom: 20px;
+  position: relative; /* Necesario para el efecto de agrandamiento */
+  overflow: hidden; /* Oculta el desbordamiento al agrandar */
+  transition: transform 0.3s; /* Transición suave */
+}
+
+.servicio-item:hover {
+  transform: scale(1.05); /* Agrandar al pasar el mouse por encima */
+}
+
+.servicio-item img {
+  width: 600px;
+  height: 500px;
+  max-width: 600px; /* Ajusta el tamaño máximo */
+  max-height: 600px; /* Ajusta la altura máxima */
+  object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+}
+
+.servicio-item h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.servicio-item p {
+  color: #555;
+}
+
+/* Media Queries para dispositivos responsivos */
+@media (max-width: 1200px) {
+  .servicio-item {
+    width: calc(50% - 20px); /* Dos columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .servicio-item {
+    width: 100%; /* Una columna en pantallas pequeñas */
+  }
+}

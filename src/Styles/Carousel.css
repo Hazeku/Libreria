@@ -1,0 +1,28 @@
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 2000px; /* Ajusta según tus necesidades */
+  height: 1200px; /* Ajusta según tus necesidades */
+}
+
+.carousel-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+
+.carousel-container img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-container img.inactive {
+  opacity: 0;
+  z-index: 0;
+}

@@ -1,0 +1,28 @@
+.category-list {
+  text-align: center; /* Centra los elementos dentro del contenedor */
+}
+
+.category-list h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.category-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.category-list li {
+  margin: 5px; /* Espacio entre los elementos */
+  padding: 10px; /* Espacio interno de los elementos */
+  border: 1px solid #ccc; /* Borde alrededor de los elementos */
+  cursor: pointer;
+}
+
+.category-list li:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse por encima */
+}
