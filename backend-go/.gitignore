@@ -1,0 +1,41 @@
+# Go binaries
+*.exe
+*.o
+*.a
+*.test
+*.out
+
+# Vendor dependencies (si no usas módulos)
+vendor/
+
+# Go modules cache
+/go/pkg/mod/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+
+# Configuration files (sensitive information)
+.env
+
+# Logs
+*.log
+
+# Temporary files
+*~
+\#*#
+.*.swp
+.DS_Store
+
+# Coverage files
+coverage*
+
+# Compiled assets (si tienes frontend)
+build/
+dist/
+
+# Cualquier archivo específico de tu sistema operativo
+._*

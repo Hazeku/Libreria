@@ -1,103 +1,101 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
+	"os"
+	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	"github.com/joho/godotenv"
+
+	"backend-go/config"
+	"backend-go/database"
+	"backend-go/handlers"
+	"backend-go/middleware"
+	"backend-go/models"
 )
 
+var validate *validator.Validate
+
+func GetClientIP(r *http.Request) string {
+	forwardedFor := r.Header.Get("X-Forwarded-For")
+	if forwardedFor != "" {
+		return strings.Split(forwardedFor, ",")[0]
+	}
+	return r.RemoteAddr
+}
+
+func myHandler(c *gin.Context) {
+	clientIP := GetClientIP(c.Request)
+	ginClientIP := c.ClientIP() // Esta debería ser la IP real determinada por Gin
+
+	c.JSON(http.StatusOK, gin.H{
+		"clientIP":    clientIP,
+		"ginClientIP": ginClientIP,
+		"message":     "Hello from handler",
+	})
+}
+
 func main() {
+	// Cargar las variables de entorno desde el archivo .env
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Error loading .env file")
+	}
+	
+	validate = validator.New()
+
 	r := gin.Default()
-	InitDB()
+
+	// Configurar la confianza de proxies (reemplaza con las IPs REALES de tus proxies)
+	r.SetTrustedProxies([]string{
+		"192.168.1.45", // IP local de tu servidor
+		"192.168.0.1",  // IP de tu proxy o balanceador de carga (EJEMPLO)
+		"203.0.113.0",  // IP de tu proxy de infraestructura en la nube (EJEMPLO)
+		// Agrega aquí más IPs de proxies confiables si los tienes
+	})
+	config.LoadConfig()
+	// Inicializar la base de datos
+	if err := database.InitDB(); err != nil {
+		log.Fatalf("Failed to initialize database: %v", err)
+		return
+	}
+
+	// **IMPORTANTE: Comentar o eliminar AutoMigrate en producción**
+	// database.DB.AutoMigrate(&models.User{}, &models.Article{})
+
+	ownerUsername := os.Getenv("OWNER_USERNAME")
+	ownerPasswordHash := os.Getenv("OWNER_PASSWORD_HASH")
+
+	if ownerUsername == "" || ownerPasswordHash == "" {
+		log.Fatalf("OWNER_USERNAME or OWNER_PASSWORD_HASH environment variables not set")
+		return
+	}
+
+	// Definir al usuario propietario desde variables de entorno
+	ownerUser := models.User{
+		Username: ownerUsername,
+		Password: ownerPasswordHash,
+	}
 
 	// Rutas públicas
-	r.POST("/login", login)
+	r.POST("/login", handlers.Login(ownerUser))
+	// authGroup.POST("/articles", handlers.CreateArticle) // Corrección aquí
+	// authGroup.DELETE("/articles/:id", handlers.DeleteArticle) // Corrección aquí
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Bienvenido a la API"})
 	})
+	r.GET("/hello", myHandler) // Agregar la ruta para usar myHandler
 
 	// Rutas protegidas (solo para el propietario)
-	auth := r.Group("/")
-	auth.Use(AuthMiddleware())
+	authGroup := r.Group("/")
+	authGroup.Use(middleware.AuthMiddleware(ownerUser))
 	{
-		auth.POST("/articles", createArticle)
-		auth.DELETE("/articles/:id", deleteArticle)
+		authGroup.POST("/articles", handlers.CreateArticle)       // Corrección aquí
+		authGroup.DELETE("/articles/:id", handlers.DeleteArticle) // Corrección aquí
 	}
 
-	r.Run(":8000")
-}
-
-// Definir al usuario propietario (esto debería moverse a un archivo de configuración)
-var ownerUser = User{
-	Username: "owner",
-	Password: "$2a$14$2b2yAq3TpUMzJ/aWzQ/uX.WJ8gUwhcOj5dE4zOxoZy.Bc/lXm9Jde", // Contraseña hasheada (ejemplo)
-}
-
-// Handler para iniciar sesión y obtener un token
-func login(c *gin.Context) {
-	var creds struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
-	}
-
-	if err := c.BindJSON(&creds); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Datos inválidos"})
-		return
-	}
-
-	// Validar usuario
-	if creds.Username != ownerUser.Username || !CheckPasswordHash(creds.Password, ownerUser.Password) {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Credenciales inválidas"})
-		return
-	}
-
-	token, _ := GenerateJWT(ownerUser.Username)
-	c.JSON(http.StatusOK, gin.H{"token": token})
-}
-
-// Middleware de autenticación
-func AuthMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		tokenString := c.GetHeader("Authorization")
-		if tokenString == "" {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Token requerido"})
-			c.Abort()
-			return
-		}
-
-		username, err := ValidateJWT(tokenString)
-		if err != nil || username != ownerUser.Username {
-			c.JSON(http.StatusForbidden, gin.H{"error": "Acceso denegado"})
-			c.Abort()
-			return
-		}
-
-		c.Next()
-	}
-}
-
-// Crear un nuevo artículo
-func createArticle(c *gin.Context) {
-	var article Article
-	if err := c.BindJSON(&article); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Datos inválidos"})
-		return
-	}
-
-	DB.Create(&article)
-	c.JSON(http.StatusOK, article)
-}
-
-// Eliminar un artículo por ID
-func deleteArticle(c *gin.Context) {
-	id := c.Param("id")
-	var article Article
-	result := DB.First(&article, id)
-
-	if result.Error != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Artículo no encontrado"})
-		return
-	}
-
-	DB.Delete(&article)
-	c.JSON(http.StatusOK, gin.H{"message": "Artículo eliminado"})
+	r.Run(config.ServerPort)
 }
