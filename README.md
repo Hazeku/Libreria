@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+📚 Librería App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bienvenido a Librería App, un sistema de gestión de librerías que permite administrar libros, usuarios y compras de manera eficiente. Este proyecto está compuesto por un backend en Go con GORM y PostgreSQL, y un frontend desarrollado con React.
 
-## Available Scripts
+🚀 Características principales
 
-In the project directory, you can run:
+🔹 Backend (Go + GORM + PostgreSQL)
 
-### `npm start`
+Autenticación con JWT.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Gestión de usuarios, libros y compras.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Conexión con PostgreSQL usando GORM.
 
-### `npm test`
+Implementación de middleware para proteger rutas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔹 Frontend (React + Vite)
 
-### `npm run build`
+Interfaz intuitiva y amigable.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Consumo de API mediante Axios.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Autenticación de usuarios.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Gestión de libros y compras desde el dashboard.
 
-### `npm run eject`
+🛠️ Instalación y configuración
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📌 Prerrequisitos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tener instalado Go y Node.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+PostgreSQL en ejecución
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🔧 Instalación del Backend
 
-## Learn More
+cd backend-go
+go mod tidy
+go run main.go
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Configurar base de datos en config.yaml o .env:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+db_host: "localhost"
+db_port: 5432
+db_user: "tu_usuario"
+db_password: "tu_contraseña"
+db_name: "libreria_db"
 
-### Code Splitting
+🔧 Instalación del Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+cd frontend-react
+npm install
+npm run dev
 
-### Analyzing the Bundle Size
+🌐 Uso
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Accede al frontend en http://localhost:5173
 
-### Making a Progressive Web App
+Regístrate o inicia sesión.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Gestiona libros, compras y usuarios.
 
-### Advanced Configuration
+📜 API Endpoints principales
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+POST /login → Inicia sesión y devuelve un token JWT.
 
-### Deployment
+GET /books → Lista todos los libros.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+POST /books → Agrega un libro (requiere autenticación).
 
-### `npm run build` fails to minify
+DELETE /books/:id → Elimina un libro (requiere autenticación).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🛡️ Seguridad
+
+Uso de JWT para autenticación.
+
+Middleware para proteger rutas sensibles.
+
+CORS configurado en el backend.
+
+🏗️ Tecnologías utilizadas
+
+Backend: Go, GORM, PostgreSQL, JWT, Echo
+
+Frontend: React, Vite, Axios, Tailwind CSS
+
+📌 Contribuciones
+
+¡Las contribuciones son bienvenidas! Abre un issue o envía un pull request.
+
+📞 Contacto
+
+Si tienes preguntas o sugerencias, contáctanos en tu-email@example.com.
