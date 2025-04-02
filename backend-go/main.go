@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -14,7 +15,6 @@ import (
 	"backend-go/database"
 	"backend-go/handlers"
 	"backend-go/middleware"
-	"backend-go/models"
 )
 
 var validate *validator.Validate
@@ -28,30 +28,43 @@ func GetClientIP(r *http.Request) string {
 }
 
 func myHandler(c *gin.Context) {
-	clientIP := GetClientIP(c.Request)
 	ginClientIP := c.ClientIP() // Esta debería ser la IP real determinada por Gin
 
 	c.JSON(http.StatusOK, gin.H{
-		"clientIP":    clientIP,
 		"ginClientIP": ginClientIP,
 		"message":     "Hello from handler",
 	})
 }
 
 func loadConfiguration() {
-	// Cargar las variables de entorno desde el archivo .env
+	// Cargar variables de entorno desde .env
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	config.LoadConfig()
+
+	// Obtener JWT_SECRET desde las variables de entorno
+	jwtSecret := os.Getenv("JWT_SECRET")
+	if jwtSecret == "" {
+		log.Fatal("JWT_SECRET is not set in the .env file")
+	}
+
+	fmt.Println("JWT_SECRET: ", jwtSecret)
+
+	config.LoadConfig() // Asegúrate de que `config.LoadConfig` también esté usando el JWT_SECRET si es necesario.
 }
 
 func main() {
-	loadConfiguration()
+	// Cargar variables de entorno desde .env
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("Error al cargar el archivo .env")
+	}
 
-	validate = validator.New()
+	// Imprimir el valor de la variable PORT
+	port := os.Getenv("PORT")
+	fmt.Println("Valor de la variable PORT:", port)
 
+	// Inicializar Gin
 	r := gin.Default()
 
 	// Configurar la confianza de proxies (reemplaza con las IPs REALES de tus proxies)
@@ -68,9 +81,12 @@ func main() {
 		return
 	}
 
-	// **IMPORTANTE: Comentar o eliminar AutoMigrate en producción**
+	// Importar los artículos después de inicializar la DB (solo en desarrollo)
 	if os.Getenv("ENV") != "production" {
-		database.DB.AutoMigrate(&models.User{}, &models.Article{})
+		err := database.ImportArticles()
+		if err != nil {
+			log.Printf("⚠️  No se pudieron importar los artículos: %v", err)
+		}
 	}
 
 	// Rutas públicas
@@ -84,9 +100,19 @@ func main() {
 	authGroup := r.Group("/")
 	authGroup.Use(middleware.AuthMiddleware()) // Usamos el middleware de autenticación JWT
 	{
+		authGroup.GET("/articles", handlers.GetArticles)
 		authGroup.POST("/articles", handlers.CreateArticle)
 		authGroup.DELETE("/articles/:id", handlers.DeleteArticle)
+		authGroup.PUT("/articles/:id/assign", handlers.AssignArticleToUser)
 	}
 
-	r.Run(config.ServerPort)
+	// Obtener el puerto desde .env o usar ":8000"
+	// port = os.Getenv("PORT") // Cambiado a `=`
+ 	port = "8080"
+	if port == "" {
+		port = "8080" // Sin ":"
+	}
+
+	log.Printf("🚀 Servidor corriendo en http://localhost:%s", port)
+	r.Run(":" + port) // Aquí se asegura el formato correcto
 }
