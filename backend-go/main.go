@@ -38,13 +38,18 @@ func myHandler(c *gin.Context) {
 	})
 }
 
-func main() {
+func loadConfiguration() {
 	// Cargar las variables de entorno desde el archivo .env
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("Error loading .env file")
+		log.Fatal("Error loading .env file")
 	}
-	
+	config.LoadConfig()
+}
+
+func main() {
+	loadConfiguration()
+
 	validate = validator.New()
 
 	r := gin.Default()
@@ -56,7 +61,7 @@ func main() {
 		"203.0.113.0",  // IP de tu proxy de infraestructura en la nube (EJEMPLO)
 		// Agrega aquí más IPs de proxies confiables si los tienes
 	})
-	config.LoadConfig()
+
 	// Inicializar la base de datos
 	if err := database.InitDB(); err != nil {
 		log.Fatalf("Failed to initialize database: %v", err)
@@ -64,37 +69,23 @@ func main() {
 	}
 
 	// **IMPORTANTE: Comentar o eliminar AutoMigrate en producción**
-	// database.DB.AutoMigrate(&models.User{}, &models.Article{})
-
-	ownerUsername := os.Getenv("OWNER_USERNAME")
-	ownerPasswordHash := os.Getenv("OWNER_PASSWORD_HASH")
-
-	if ownerUsername == "" || ownerPasswordHash == "" {
-		log.Fatalf("OWNER_USERNAME or OWNER_PASSWORD_HASH environment variables not set")
-		return
-	}
-
-	// Definir al usuario propietario desde variables de entorno
-	ownerUser := models.User{
-		Username: ownerUsername,
-		Password: ownerPasswordHash,
+	if os.Getenv("ENV") != "production" {
+		database.DB.AutoMigrate(&models.User{}, &models.Article{})
 	}
 
 	// Rutas públicas
-	r.POST("/login", handlers.Login(ownerUser))
-	// authGroup.POST("/articles", handlers.CreateArticle) // Corrección aquí
-	// authGroup.DELETE("/articles/:id", handlers.DeleteArticle) // Corrección aquí
+	r.POST("/login", handlers.Login) // Usamos Login sin pasar `ownerUser`
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Bienvenido a la API"})
 	})
-	r.GET("/hello", myHandler) // Agregar la ruta para usar myHandler
+	r.GET("/hello", myHandler)
 
 	// Rutas protegidas (solo para el propietario)
 	authGroup := r.Group("/")
-	authGroup.Use(middleware.AuthMiddleware(ownerUser))
+	authGroup.Use(middleware.AuthMiddleware()) // Usamos el middleware de autenticación JWT
 	{
-		authGroup.POST("/articles", handlers.CreateArticle)       // Corrección aquí
-		authGroup.DELETE("/articles/:id", handlers.DeleteArticle) // Corrección aquí
+		authGroup.POST("/articles", handlers.CreateArticle)
+		authGroup.DELETE("/articles/:id", handlers.DeleteArticle)
 	}
 
 	r.Run(config.ServerPort)

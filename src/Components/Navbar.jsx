@@ -64,6 +64,10 @@ function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
             </div>
           </li>
         </ul>
+        <li className="nav-item">
+  <a href="/admin-login" className="nav-link">Admin</a>
+</li>
+
 
         {/* Carrito dentro de la barra */}
         <div className="cart">
