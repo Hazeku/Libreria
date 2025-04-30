@@ -108,7 +108,7 @@ func main() {
 
 	// Obtener el puerto desde .env o usar ":8000"
 	// port = os.Getenv("PORT") // Cambiado a `=`
- 	port = "8080"
+	port = "8080"
 	if port == "" {
 		port = "8080" // Sin ":"
 	}

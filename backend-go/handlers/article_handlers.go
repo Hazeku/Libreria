@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -71,12 +72,14 @@ func AssignArticleToUser(c *gin.Context) {
 		UserID uint `json:"user_id"`
 	}
 
+	// Validación de los datos recibidos
 	if err := c.ShouldBindJSON(&request); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Datos inválidos"})
 		return
 	}
 
 	// Verificar si el usuario existe
+	fmt.Println("Buscando usuario con ID:", request.UserID) // Aquí agregamos el log
 	var user models.User
 	if err := database.DB.First(&user, request.UserID).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Usuario no encontrado"})
@@ -99,15 +102,17 @@ func AssignArticleToUser(c *gin.Context) {
 	// Asignar el artículo al usuario
 	result := database.DB.Model(&article).Update("author_id", request.UserID)
 	if result.Error != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "No se pudo asignar el artículo"})
-		return
-	}
-
-	if result.Error != nil {
 		log.Printf("Error al actualizar artículo: %v", result.Error)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "No se pudo asignar el artículo"})
 		return
 	}
 
+	// Verificar si se actualizó algún registro
+	if result.RowsAffected == 0 {
+		c.JSON(http.StatusConflict, gin.H{"error": "El artículo no pudo ser asignado"})
+		return
+	}
+
+	// Respuesta exitosa
 	c.JSON(http.StatusOK, gin.H{"message": "Artículo asignado correctamente"})
 }
