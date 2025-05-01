@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
+	pgxDriver "gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"os"
 	"strings"
@@ -36,8 +36,11 @@ func InitDB() error {
 
 	fmt.Println("🔌 Conectando a la base de datos:", dbURL)
 
-	// Conexión con GORM
-	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
+	// Conexión con GORM usando pgx y desactivando prepared statements
+	db, err := gorm.Open(pgxDriver.New(pgxDriver.Config{
+		DSN:                  dbURL,
+		PreferSimpleProtocol: true,
+	}), &gorm.Config{})
 	if err != nil {
 		return fmt.Errorf("❌ Error al conectar con la base de datos: %w", err)
 	}

@@ -7,17 +7,16 @@ import (
 	"os"
 	"strings"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
 
 	"backend-go/config"
 	"backend-go/database"
 	"backend-go/handlers"
 	"backend-go/middleware"
+	// "golang.org/x/crypto/bcrypt"
 )
-
-var validate *validator.Validate
 
 func GetClientIP(r *http.Request) string {
 	forwardedFor := r.Header.Get("X-Forwarded-For")
@@ -55,24 +54,25 @@ func loadConfiguration() {
 }
 
 func main() {
-	// Cargar variables de entorno desde .env
-	if err := godotenv.Load(); err != nil {
-		fmt.Println("Error al cargar el archivo .env")
-	}
-
-	// Imprimir el valor de la variable PORT
-	port := os.Getenv("PORT")
-	fmt.Println("Valor de la variable PORT:", port)
+	// llamar a la funcion de variables de entorno
+	loadConfiguration()
 
 	// Inicializar Gin
 	r := gin.Default()
 
-	// Configurar la confianza de proxies (reemplaza con las IPs REALES de tus proxies)
+	// Habilitar CORS
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"}, // orígenes permitidos
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true, // Permitir enviar cookies
+	}))
+
+	// Configurar la confianza de proxies
 	r.SetTrustedProxies([]string{
 		"192.168.1.45", // IP local de tu servidor
-		"192.168.0.1",  // IP de tu proxy o balanceador de carga (EJEMPLO)
-		"203.0.113.0",  // IP de tu proxy de infraestructura en la nube (EJEMPLO)
-		// Agrega aquí más IPs de proxies confiables si los tienes
+		"192.168.0.1",  // IP de tu proxy
 	})
 
 	// Inicializar la base de datos
@@ -91,14 +91,15 @@ func main() {
 
 	// Rutas públicas
 	r.POST("/login", handlers.Login) // Usamos Login sin pasar `ownerUser`
+	r.POST("/register", handlers.Register)
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Bienvenido a la API"})
 	})
 	r.GET("/hello", myHandler)
 
-	// Rutas protegidas (solo para el propietario)
+	// Rutas protegidas
 	authGroup := r.Group("/")
-	authGroup.Use(middleware.AuthMiddleware()) // Usamos el middleware de autenticación JWT
+	authGroup.Use(middleware.AuthMiddleware()) // Middleware de autenticación JWT
 	{
 		authGroup.GET("/articles", handlers.GetArticles)
 		authGroup.POST("/articles", handlers.CreateArticle)
@@ -106,13 +107,22 @@ func main() {
 		authGroup.PUT("/articles/:id/assign", handlers.AssignArticleToUser)
 	}
 
-	// Obtener el puerto desde .env o usar ":8000"
-	// port = os.Getenv("PORT") // Cambiado a `=`
-	port = "8080"
+	// Configuración del puerto
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // Sin ":"
+		port = "8080" // Valor por defecto
 	}
 
 	log.Printf("🚀 Servidor corriendo en http://localhost:%s", port)
-	r.Run(":" + port) // Aquí se asegura el formato correcto
+
+	// 🔐 Solo para generar el hash de "123456" UNA VEZ
+	/* password := "123456"
+	hashed, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	if err != nil {
+		log.Fatalf("Error al hashear la contraseña: %v", err)
+	}
+	fmt.Println("🔑 Hash generado para '123456':", string(hashed)) */
+
+	// Ejecutar el servidor
+	r.Run(":" + port)
 }

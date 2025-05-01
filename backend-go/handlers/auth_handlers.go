@@ -10,6 +10,7 @@ import (
 	"backend-go/database"
 	"backend-go/models"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -44,9 +45,8 @@ func Login(c *gin.Context) {
 	log.Println("Contraseña en la BD:", user.Password)
 	log.Println("Contraseña ingresada:", creds.Password)
 
-	// Verificar si la contraseña coincide con el hash almacenado
-	// if !auth.CheckPasswordHash(creds.Password, user.Password) {
-	if creds.Password != user.Password {
+	// Verifica si la contraseña ingresada coincide con el hash almacenado en la base de datos
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(creds.Password)); err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Credenciales inválidas"})
 		return
 	}
@@ -66,4 +66,48 @@ func Login(c *gin.Context) {
 		"token":      token,
 		"expires_at": expiration.Format(time.RFC3339),
 	})
+}
+
+// Handler para registrar un nuevo usuario
+func Register(c *gin.Context) {
+	var userInput struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	// Obtener los datos del cuerpo de la solicitud
+	if err := c.BindJSON(&userInput); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		return
+	}
+
+	// Validar que el nombre de usuario no esté vacío
+	if userInput.Username == "" || userInput.Password == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "El nombre de usuario y la contraseña son obligatorios"})
+		return
+	}
+
+	// Hashear la contraseña
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(userInput.Password), bcrypt.DefaultCost)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error al procesar la contraseña"})
+		return
+	}
+
+	// Crear el usuario
+	user := models.User{
+		Username: userInput.Username,
+		Password: string(hashedPassword),
+		Role:     "owner", // O el valor predeterminado que prefieras
+	}
+
+	// Guardar el nuevo usuario en la base de datos
+	if err := database.DB.Create(&user).Error; err != nil {
+		log.Println("Error al registrar el usuario:", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error al registrar el usuario"})
+		return
+	}
+
+	// Responder con éxito
+	c.JSON(http.StatusOK, gin.H{"message": "Usuario registrado con éxito"})
 }
