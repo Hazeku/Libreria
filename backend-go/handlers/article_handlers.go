@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -14,14 +15,49 @@ import (
 
 // CreateArticle maneja la creación de un nuevo artículo.
 func CreateArticle(c *gin.Context) {
-	var article models.Article
-	if err := c.BindJSON(&article); err != nil {
-		log.Printf("Error binding JSON for createArticle: %v", err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error al procesar los datos del artículo"})
+	title := c.PostForm("title")
+	description := c.PostForm("description")
+	category := c.PostForm("category")
+	priceStr := c.PostForm("price")
+
+	price, err := strconv.ParseFloat(priceStr, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Precio inválido"})
 		return
 	}
 
-	database.DB.Create(&article)
+	// Manejo de imagen
+	file, err := c.FormFile("image")
+	var imagePath string
+	if err == nil && file != nil {
+		filename := fmt.Sprintf("%d_%s", time.Now().UnixNano(), file.Filename)
+		fullPath := "public/Images/" + filename
+
+		err := c.SaveUploadedFile(file, fullPath)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "No se pudo guardar la imagen"})
+			return
+		}
+
+		imagePath = "/Images/" + filename
+	} else {
+		imagePath = ""
+	}
+
+	article := models.Article{
+		Title:       title,
+		Description: description,
+		Category:    category,
+		Price:       price,
+		Image:       imagePath,
+	}
+
+	// Guardar en DB
+	if err := database.DB.Create(&article).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error al guardar el artículo"})
+		return
+	}
+
 	c.JSON(http.StatusOK, article)
 }
 

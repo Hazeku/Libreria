@@ -34,13 +34,13 @@ func TestCreateArticleIntegration(t *testing.T) {
 	// Crear los datos del artículo a enviar
 	articleData := models.Article{
 		Title:   "Test Article",
-		Content: "This is a test article.",
+		Description: "This is a test article.",
 	}
 	body, _ := json.Marshal(articleData)
 
 	// Crear una solicitud HTTP
 	req, _ := http.NewRequest("POST", "/articles", bytes.NewBuffer(body))
-	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Description-Type", "application/json")
 
 	// Crear un recorder para capturar la respuesta
 	w := httptest.NewRecorder()
@@ -55,7 +55,7 @@ func TestCreateArticleIntegration(t *testing.T) {
 	err = json.Unmarshal(w.Body.Bytes(), &createdArticle)
 	assert.NoError(t, err)
 	assert.Equal(t, articleData.Title, createdArticle.Title)
-	assert.Equal(t, articleData.Content, createdArticle.Content)
+	assert.Equal(t, articleData.Description, createdArticle.Description)
 
 	// Verificar que el artículo se guardó en la base de datos
 	var retrievedArticle models.Article

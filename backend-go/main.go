@@ -124,5 +124,7 @@ func main() {
 	fmt.Println("🔑 Hash generado para '123456':", string(hashed)) */
 
 	// Ejecutar el servidor
+	r.Static("/Images", "./public/Images")
+
 	r.Run(":" + port)
 }

@@ -2,12 +2,13 @@ package database
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
-	pgxDriver "gorm.io/driver/postgres"
-	"gorm.io/gorm"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/joho/godotenv"
+	pgxDriver "gorm.io/driver/postgres"
+	"gorm.io/gorm"
 
 	"backend-go/models"
 )
@@ -92,12 +93,13 @@ func RestartDBConnection() error {
 
 // Migraciones con chequeo por tabla
 func Migrate(DB *gorm.DB) error {
-	// Lista de modelos a migrar
+	// Lista de modelos a migrar, ahora incluye Category
 	modelsToMigrate := []interface{}{
 		&models.User{},
 		&models.Article{},
 		&models.Order{},
 		&models.OrderArticle{},
+		&models.Category{}, // Agregar modelo Category aquí
 	}
 
 	// Comprobamos si la tabla existe y realizamos la migración si es necesario
