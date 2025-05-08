@@ -27,11 +27,15 @@
 }
 
 .modal-image {
-  width: 100%; /* La imagen ocupará el 100% del contenedor */
-  max-width: 300px; /* Limita el tamaño máximo de la imagen */
+  max-width: 300px;      /* Limita el ancho máximo */
+  max-height: 300px;     /* Limita la altura máxima */
+  width: auto;           /* Solo escala si es más grande */
+  height: auto;
+  object-fit: contain;   /* Evita distorsiones */
   border-radius: 8px;
-  margin-bottom: 20px; /* Espacio entre la imagen y la descripción */
+  margin-bottom: 20px;
 }
+
 
 .modal-description {
   text-align: center;

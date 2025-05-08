@@ -38,12 +38,14 @@
 
 .item-list img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  max-height: 200px;
+  height: 200px;
+  object-fit: contain; /* ✅ Muestra la imagen completa sin recortarla */
+  background-color: #f9f9f9; /* Opcional: para fondo uniforme */
+  padding: 10px; /* Opcional: separa visualmente */
   border-radius: 8px;
   transition: transform 0.3s ease-in-out;
 }
+
 
 .item-list li:hover h3,
 .item-list li:hover p,
