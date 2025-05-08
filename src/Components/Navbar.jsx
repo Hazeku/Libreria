@@ -44,7 +44,7 @@ function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
         <a href="/" className="navbar-brand">Logo</a>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a href="/" className="nav-link">Inicio</a>
+            
           </li>
           <li className="nav-item dropdown">
             <a href="#!" className="nav-link dropdown-toggle" id="navbarDropdown" role="button">

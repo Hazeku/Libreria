@@ -227,9 +227,20 @@ const AdminDashboard = () => {
           }}
           className="modal-input"
         />
-        {imagePreview && (
-          <img src={imagePreview} alt="Preview" className="modal-preview-image" />
-        )}
+        {/* Si se eligió una nueva imagen, mostrar la preview */}
+{imagePreview ? (
+  <img src={imagePreview} alt="Preview" className="modal-preview-image" />
+) : (
+  // Si no hay nueva imagen, mostrar la imagen existente (si hay)
+  formData.image && (
+    <img
+      src={`${API_URL}${formData.image}`}
+      alt="Imagen actual"
+      className="modal-preview-image"
+    />
+  )
+)}
+
         <input
           type="number"
           name="price"
