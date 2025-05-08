@@ -14,6 +14,7 @@ const AdminDashboard = () => {
   const [editingArticle, setEditingArticle] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -154,7 +155,7 @@ const AdminDashboard = () => {
           <li key={article.id} data-aos="fade-up">
             <h3>{article.title}</h3>
             <img
-              src={article.image} // Si no hay imagen, usar placeholder
+              src={`${API_URL}${article.image}`} // Aseguramos que la ruta sea completa
               alt={article.title}
               onError={(e) => {
                 e.target.src = '/Images/placeholder.png'; // Usar placeholder si falla la carga de imagen

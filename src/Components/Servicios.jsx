@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Servicios() {
-  const [servicios, setServicios] = useState([
+  const [servicios,] = useState([
     {
       nombre: 'Impresión',
       imagenes: ['/Images/impresión1.webp', '/Images/impresión2.webp', '/Images/impresión3.webp'],

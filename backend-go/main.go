@@ -62,7 +62,7 @@ func main() {
 
 	// Habilitar CORS
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // orígenes permitidos
+		AllowOrigins:     []string{"http://localhost:3000", "http://192.168.1.40:3000"}, // orígenes permitidos
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -79,6 +79,11 @@ func main() {
 	if err := database.InitDB(); err != nil {
 		log.Fatalf("Failed to initialize database: %v", err)
 		return
+	}
+
+	// Cargar artículos desde el archivo JSON
+	if err := handlers.CargarArticulosDesdeJSON(); err != nil {
+		log.Fatalf("Error cargando artículos desde JSON: %v", err)
 	}
 
 	// Importar los artículos después de inicializar la DB (solo en desarrollo)
@@ -105,6 +110,7 @@ func main() {
 		authGroup.POST("/articles", handlers.CreateArticle)
 		authGroup.DELETE("/articles/:id", handlers.DeleteArticle)
 		authGroup.PUT("/articles/:id/assign", handlers.AssignArticleToUser)
+		authGroup.PUT("/articles/:id", handlers.UpdateArticle)
 	}
 
 	// Configuración del puerto
