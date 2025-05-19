@@ -35,9 +35,11 @@ const PublicHome = () => {
   }, []);
 
   const fetchArticles = async () => {
+    console.log("🔍 Haciendo fetch a:", `${API_URL}/articles`);
     try {
       const res = await fetch(`${API_URL}/articles`);
       const data = await res.json();
+      console.log("✅ Datos recibidos:", data);
       if (Array.isArray(data.articles)) {
         // ✅ Agregamos la URL completa para las imágenes
         const articlesConImagenes = data.articles.map(article => ({

@@ -32,7 +32,7 @@ const AdminDashboard = () => {
 
     // Limpiamos AOS cuando el componente se desmonte
     return () => AOS.refresh();
-  }, []);
+  }, [fetchArticles, fetchCategories]);
 
   useEffect(() => {
     AOS.refresh(); // Refrescamos AOS cada vez que la lista de artículos cambie

@@ -10,6 +10,7 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("🔐 Enviando login a:", `${API_URL}/login`);
     e.preventDefault();
     try {
       const response = await fetch(`${API_URL}/login`, {
@@ -25,6 +26,7 @@ const AdminLogin = () => {
       }
 
       const data = await response.json();
+      console.log("🔐 Respuesta de login:", data);
       localStorage.setItem('adminToken', data.token);
       navigate('/admin');
     } catch (err) {
