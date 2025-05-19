@@ -35,9 +35,14 @@ func myHandler(c *gin.Context) {
 }
 
 func loadConfiguration() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	// Solo intentamos cargar .env si no estamos en producción
+	if os.Getenv("ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Println("⚠️ No se pudo cargar el archivo .env (modo desarrollo):", err)
+		} else {
+			fmt.Println("✅ .env cargado correctamente")
+		}
 	}
 
 	jwtSecret := os.Getenv("JWT_SECRET")
