@@ -64,7 +64,7 @@ func main() {
 
 	// CORS
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000", "http://192.168.1.40:3000"},
+		AllowOrigins:     []string{"http://localhost:3000", "http://192.168.1.40:3000", "https://libreriaosvaldo.netlify.app/"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
