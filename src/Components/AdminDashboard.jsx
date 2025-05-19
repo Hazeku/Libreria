@@ -2,45 +2,30 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import API_URL from '../api/config';
 import '../Styles/AdminDashboard.css';
-import AOS from 'aos'; // Asegúrate de tener AOS importado
-import 'aos/dist/aos.css'; // Estilos de AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 Modal.setAppElement('#root');
 
 const AdminDashboard = () => {
   const [articles, setArticles] = useState([]);
-  const [categories, setCategories] = useState([]); // Estado para las categorías
+  const [categories, setCategories] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editingArticle, setEditingArticle] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-  
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     price: '',
     image: '',
-    category: '', // El campo category será un select
+    category: '',
   });
 
   const token = localStorage.getItem('adminToken');
 
-  
-
-  useEffect(() => {
-    AOS.init(); // Inicializamos AOS
-    fetchArticles();
-    fetchCategories(); // Cargamos las categorías
-
-    // Limpiamos AOS cuando el componente se desmonte
-    return () => AOS.refresh();
-  }, [fetchArticles, fetchCategories]);
-
-  useEffect(() => {
-    AOS.refresh(); // Refrescamos AOS cada vez que la lista de artículos cambie
-  }, [articles]);
-
-   // ✅ Envolver con useCallback para evitar advertencias de hooks
+  // ✅ PRIMERO definimos estas funciones antes del useEffect
   const fetchArticles = useCallback(async () => {
     try {
       const res = await fetch(`${API_URL}/articles`, {
@@ -71,6 +56,18 @@ const AdminDashboard = () => {
     }
   }, [token]);
 
+  // ✅ Ahora sí, se usan abajo
+  useEffect(() => {
+    AOS.init();
+    fetchArticles();
+    fetchCategories();
+    return () => AOS.refresh();
+  }, [fetchArticles, fetchCategories]);
+
+  useEffect(() => {
+    AOS.refresh();
+  }, [articles]);
+
   const openModal = (article = null) => {
     if (article) {
       setFormData({
@@ -78,7 +75,7 @@ const AdminDashboard = () => {
         description: article.description || '',
         price: article.price || '',
         image: article.image || '',
-        category: article.category || '', // Seleccionamos la categoría del artículo
+        category: article.category || '',
       });
       setEditingArticle(article.id);
     } else {
@@ -116,9 +113,9 @@ const AdminDashboard = () => {
     form.append('title', formData.title);
     form.append('description', formData.description);
     form.append('price', formData.price);
-    form.append('category', formData.category); // Enviamos la categoría seleccionada
+    form.append('category', formData.category);
     if (imageFile) {
-      form.append('image', imageFile); // Solo si se seleccionó
+      form.append('image', imageFile);
     }
 
     await fetch(url, {
@@ -155,10 +152,10 @@ const AdminDashboard = () => {
           <li key={article.id} data-aos="fade-up">
             <h3>{article.title}</h3>
             <img
-              src={`${API_URL}${article.image}`} // Aseguramos que la ruta sea completa
+              src={`${API_URL}${article.image}`}
               alt={article.title}
               onError={(e) => {
-                e.target.src = '/Images/placeholder.png'; // Usar placeholder si falla la carga de imagen
+                e.target.src = '/Images/placeholder.png';
               }}
             />
             <p>{article.description}</p>
@@ -227,20 +224,17 @@ const AdminDashboard = () => {
           }}
           className="modal-input"
         />
-        {/* Si se eligió una nueva imagen, mostrar la preview */}
-{imagePreview ? (
-  <img src={imagePreview} alt="Preview" className="modal-preview-image" />
-) : (
-  // Si no hay nueva imagen, mostrar la imagen existente (si hay)
-  formData.image && (
-    <img
-      src={`${API_URL}${formData.image}`}
-      alt="Imagen actual"
-      className="modal-preview-image"
-    />
-  )
-)}
-
+        {imagePreview ? (
+          <img src={imagePreview} alt="Preview" className="modal-preview-image" />
+        ) : (
+          formData.image && (
+            <img
+              src={`${API_URL}${formData.image}`}
+              alt="Imagen actual"
+              className="modal-preview-image"
+            />
+          )
+        )}
         <input
           type="number"
           name="price"
