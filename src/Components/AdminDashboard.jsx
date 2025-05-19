@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import API_URL from '../api/config';
 import '../Styles/AdminDashboard.css';
@@ -25,6 +25,8 @@ const AdminDashboard = () => {
 
   const token = localStorage.getItem('adminToken');
 
+  
+
   useEffect(() => {
     AOS.init(); // Inicializamos AOS
     fetchArticles();
@@ -38,38 +40,36 @@ const AdminDashboard = () => {
     AOS.refresh(); // Refrescamos AOS cada vez que la lista de artículos cambie
   }, [articles]);
 
-  const fetchArticles = async () => {
+   // ✅ Envolver con useCallback para evitar advertencias de hooks
+  const fetchArticles = useCallback(async () => {
     try {
       const res = await fetch(`${API_URL}/articles`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
-      console.log('Datos de artículos:', data);
       if (Array.isArray(data)) {
         setArticles(data);
       } else if (Array.isArray(data.articles)) {
         setArticles(data.articles);
       } else {
-        console.error('Formato inesperado:', data);
-        setArticles([]); // O mantener artículos anteriores
+        setArticles([]);
       }
     } catch (error) {
       console.error('Error al obtener artículos:', error);
     }
-  };
+  }, [token]);
 
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     try {
-      const res = await fetch(`${API_URL}/categories`, { // Asegúrate de tener esta ruta configurada en tu backend
+      const res = await fetch(`${API_URL}/categories`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
-      console.log('Categorías:', data);
-      setCategories(data); // Asumiendo que el backend retorna un array de categorías
+      setCategories(data);
     } catch (error) {
       console.error('Error al obtener categorías:', error);
     }
-  };
+  }, [token]);
 
   const openModal = (article = null) => {
     if (article) {
