@@ -90,4 +90,4 @@ Frontend: React, Vite, Axios, Tailwind CSS
 
 📞 Contacto
 
-Si tienes preguntas o sugerencias, contáctanos en tu-email@example.com.
+Si tienes preguntas o sugerencias, contáctanos
