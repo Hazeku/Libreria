@@ -2,12 +2,12 @@
     background-color: #1b1b1b; /* Fondo blanco */
     padding: 40px 20px; /* Espaciado */
     text-align: center; /* Centrar el texto */
-    border-bottom: 10px solid #333; /* Línea separadora */
+    border-bottom: 32px solid #333; /* Línea separadora */
   }
   
   .Titulo h1 {
     margin: 0;
-    font-size: 44px;
+    font-size: 32px;
     color: #fff;
   }
   

@@ -91,6 +91,18 @@ func main() {
 		}
 	}
 
+	r.GET("/categories", func(c *gin.Context) {
+		c.JSON(http.StatusOK, []string{
+			"Instrumentos escolares",
+			"Suministros escolares",
+			"Libros",
+			"Utilidades",
+			"Biblioratos",
+			"Carpetas",
+			"Material de Arte, Manualidades, Decoraciones",
+		})
+	})
+
 	// 🌐 Rutas públicas
 	r.POST("/login", handlers.Login)
 	r.POST("/register", handlers.Register)
