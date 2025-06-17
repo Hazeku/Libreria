@@ -1,4 +1,6 @@
 import React from 'react';
+import { HiOutlineShoppingBag } from 'react-icons/hi2'; // Modern bag icon
+
 
 function Modal({ item, onClose, onAddToCart }) {
   return (
@@ -12,8 +14,10 @@ function Modal({ item, onClose, onAddToCart }) {
         
         {/* Botón para agregar al carrito */}
         <button className="modal-add-to-cart" onClick={() => onAddToCart(item)}>
-        <i class="bi bi-cart-plus"></i> Agregar al carrito
-        </button>
+  <HiOutlineShoppingBag size={20} style={{ marginRight: '8px' }} />
+  Agregar al carrito
+</button>
+
 
         {/* Botón de cierre */}
         <button className="modal-close" onClick={onClose}>X</button>

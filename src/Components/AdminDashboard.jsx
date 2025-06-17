@@ -143,9 +143,12 @@ const AdminDashboard = () => {
   return (
     <div className="item-list">
       <h1>Panel de administrador</h1>
+      {/* 🔧 Contenedor aislado para el botón */}
+    <div className="admin-add-container">
       <button onClick={() => openModal()} className="admin-add-button">
         ➕ Agregar artículo
       </button>
+    </div>
 
       <ul>
         {articles.map((article) => (
@@ -202,11 +205,11 @@ const AdminDashboard = () => {
           className="modal-input"
         >
           <option value="">Selecciona una categoría</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.name}>
-              {category.name}
-            </option>
-          ))}
+          {categories.map((category, index) => (
+  <option key={index} value={category}>
+    {category}
+  </option>
+))}
         </select>
         <input
           type="file"

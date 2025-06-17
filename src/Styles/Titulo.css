@@ -1,8 +1,8 @@
 .Titulo {
-    background-color: #1b1b1b; /* Fondo blanco */
+    background-color: #041a2b; /* Fondo blanco */
     padding: 40px 20px; /* Espaciado */
     text-align: center; /* Centrar el texto */
-    border-bottom: 32px solid #333; /* Línea separadora */
+    border-bottom: 0px solid #333; /* Línea separadora */
   }
   
   .Titulo h1 {

@@ -1,6 +1,12 @@
-import React from 'react';
+// Navbar.jsx
+import React, { useState } from 'react';
+import { BiMenu } from 'react-icons/bi';
+
 
 function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
+  const [showCart, setShowCart] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const enviarPorWhatsApp = () => {
     const numeroTelefono = "+543865653191";
     if (cartItems.length === 0) {
@@ -16,83 +22,64 @@ function Navbar({ categories, onSelectCategory, cartItems, removeFromCart }) {
     window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, "_blank");
   };
 
-  /*     const calcularTotal = () => {
-        let total = 0;
-        cartItems.forEach(item => {
-          const price = parseFloat(item.price.replace('$', ''));
-          if (!isNaN(price)) {
-            total += price * item.quantity;
-          }
-        });
-        return total.toFixed(2);
-      };
-  
-      const total = calcularTotal(); */
-
-  /*     const mensaje = encodeURIComponent(
-        `¡Hola! Quiero comprar estos productos:\n\n` +
-        cartItems.map(item => `- ${item.title} x ${item.quantity} 
-        (${item.price})`).join("\n") + `\n\nTotal: $${total}`
-      );
-  
-      window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, "_blank");
-    }; */
-
   return (
     <nav className="navbar">
-      <div className="navcontainer">
-        <a href="/" className="navbar-brand">Inicio</a>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            
-          </li>
-          <li className="nav-item dropdown">
-            <a href="#!" className="nav-link dropdown-toggle" id="navbarDropdown" role="button">
-              Categorías
-            </a>
-            <div className="dropdown-menu">
-              {categories.map((category, index) => (
-                <a
-                  key={index}
-                  className="dropdown-item"
-                  href="#!"
-                  onClick={() => onSelectCategory(category)}
-                >
-                  {category}
-                </a>
-              ))}
-            </div>
-          </li>
-        </ul>
-        <li className="nav-item">
-  <a href="/admin-login" className="nav-link">Admin</a>
-</li>
+      <a href="/" className="navbar-brand">Home</a>
 
-
-        {/* Carrito dentro de la barra */}
-        <div className="cart">
-          <button className="cart-toggle">
-            <i className="bi bi-cart"></i> {cartItems.length}
-          </button>
-          {cartItems.length > 0 && (
-            <div className="cart-dropdown">
-              <ul>
-                {cartItems.map((item, index) => (
-                  <li key={index}>
-                    {item.title} x {item.quantity}
-                    <button onClick={() => removeFromCart(item.id)}>
-                      <i className="bi bi-cart-dash"></i>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              {/* Botón para enviar por WhatsApp */}
-              <button onClick={enviarPorWhatsApp} className="whatsapp-btn">
-                <i className="bi bi-whatsapp"></i> Enviar pedido
+      <div className="navbar-dropdown">
+        <button
+          onClick={() => setShowDropdown(!showDropdown)}
+          className="dropdown-toggle"
+        >
+          <BiMenu size={24} />
+        </button>
+        {showDropdown && (
+          <div className="dropdown-menu animate-fade-in">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  onSelectCategory(category);
+                  setShowDropdown(false);
+                }}
+                className="dropdown-item"
+              >
+                {category}
               </button>
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <a href="/admin-login" className="navbar-link">Admin</a>
+
+      <div className="cart">
+        <button
+          onClick={() => setShowCart(!showCart)}
+          className="cart-toggle"
+        >
+          <i className="bi bi-cart"></i> ({cartItems.length})
+        </button>
+        {showCart && (
+          <div className="cart-dropdown animate-fade-in">
+            <ul className="cart-items">
+              {cartItems.map((item, index) => (
+                <li key={index} className="cart-item">
+                  <span>{item.title} x {item.quantity}</span>
+                  <button onClick={() => removeFromCart(item.id)}>
+                    <i className="bi bi-x"></i>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={enviarPorWhatsApp}
+              className="whatsapp-btn"
+            >
+              <i className="bi bi-whatsapp"></i> Enviar pedido
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

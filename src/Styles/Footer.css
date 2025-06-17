@@ -1,58 +1,86 @@
 .footer {
-  background-color: #1b1b1b;
-  color: #b4b4b4;
-  padding: 20px 0;
+  background-color: #0a2a43; /* Azul oscuro fuerte */
+  color: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .footer-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-section {
-  flex: 1 1 200px;
-  margin: 10px;
+  flex: 1 1 220px;
+  min-width: 200px;
 }
 
 .footer-section h4 {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00d8ff;
+  position: relative;
 }
 
+.footer-section p,
 .footer-section a {
-  color: #6c93ff;
-  display: block;
-  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.6;
   text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
 }
 
-.footer-section a:hover {
-  transition: ease 0.2s;
-  transform: scale(1.05);
+.footer-section a::after,
+.footer-section p.link-hover::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #00d8ff;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.3s ease;
 }
 
-.subscription-form {
-  display: flex;
-  flex-direction: column;
+.footer-section a:hover::after,
+.footer-section p.link-hover:hover::after {
+  width: 100%;
 }
 
-.subscription-form input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 5px;
+.footer-section a:hover,
+.footer-section p.link-hover:hover {
+  color: #00d8ff;
 }
 
-.subscription-form button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #6c93ff;
-  color: white;
-  cursor: pointer;
-}
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-.subscription-form button:hover {
-  background-color: #1c7ed6;
+  .footer-section {
+    width: 100%;
+  }
 }

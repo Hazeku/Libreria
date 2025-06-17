@@ -73,3 +73,18 @@
 .modal-add-to-cart:hover {
   background-color: #218838; /* Cambio a un verde más oscuro al pasar el cursor */
 }
+
+@keyframes zoomFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content {
+  animation: zoomFade 0.3s ease-out;
+}
